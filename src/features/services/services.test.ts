@@ -20,19 +20,19 @@ describe('Service UUID Resolution & Safety', () => {
     expect(result).toBe(validUuid)
   })
 
-  it('maps legacy s1000000 prefix to valid e1000000 hex UUID', async () => {
+  it('maps legacy s1000000 prefix to valid hex UUID', async () => {
     const legacyId = 's1000000-0000-0000-0000-000000000001'
     const result = await resolveServiceUuid(legacyId)
-    expect(result).toBe('e1000000-0000-0000-0000-000000000001')
+    expect(result).toBe('7516044a-3883-41f6-8324-863d3ea80f5c')
     expect(UUID_REGEX.test(result!)).toBe(true)
   })
 
   it('maps legacy s2000000 and s3000000 IDs correctly', async () => {
     const res2 = await resolveServiceUuid('s2000000-0000-0000-0000-000000000002')
-    expect(res2).toBe('e2000000-0000-0000-0000-000000000002')
+    expect(res2).toBe('7b626640-6e63-4314-8b36-669b0dbd4dac')
 
     const res3 = await resolveServiceUuid('s3000000-0000-0000-0000-000000000003')
-    expect(res3).toBe('e3000000-0000-0000-0000-000000000003')
+    expect(res3).toBe('c297a263-5834-417d-bd8a-9319966f542f')
   })
 
   it('resolves slug to database UUID if row exists in remote table', async () => {
@@ -68,7 +68,7 @@ describe('Service UUID Resolution & Safety', () => {
 
   it('ensures legacy service ID map references valid UUIDs', () => {
     Object.entries(LEGACY_SERVICE_ID_MAP).forEach(([key, val]) => {
-      expect(key.startsWith('s')).toBe(true)
+      expect(key.startsWith('s') || key.startsWith('e')).toBe(true)
       expect(UUID_REGEX.test(val.canonicalId)).toBe(true)
       expect(val.slug).toBeTruthy()
     })
@@ -154,8 +154,8 @@ describe('Service UUID Resolution & Safety', () => {
     // 1. Defaults by title
     const individuDefaults = getDefaultFeaturesByTitle('Layanan Konseling Individu')
     expect(individuDefaults).toContain('Sesi konseling 1-on-1 (60 menit)')
-    expect(individuDefaults).toContain('Daring atau tatap muka Pondok Bambu')
-    expect(individuDefaults).toContain('Pendamping Soul Guidance atau Soul Expert')
+    expect(individuDefaults).toContain('Online (Google Meet) - Voice Call / Video Call')
+    expect(individuDefaults).toContain('Offline / Tatap Muka (Pondok Bambu) - By Appointment')
 
     const mhcuDefaults = getDefaultFeaturesByTitle('Layanan MHCU (Mental Health Check Up)')
     expect(mhcuDefaults).toContain('Asesmen kondisi psikologis terstruktur')

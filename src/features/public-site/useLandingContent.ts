@@ -17,7 +17,9 @@ export function useLandingContent() {
   const query = useQuery<LandingContentMap>({
     queryKey: ['soulaide-landing-content'],
     queryFn: () => landingContentService.fetchAllLandingContent(),
-    staleTime: 1000 * 30, // 30s cache
+    staleTime: 0,
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: true,
   })
 
   const updateMutation = useMutation<

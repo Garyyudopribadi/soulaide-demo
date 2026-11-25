@@ -243,25 +243,17 @@ export const defaultLandingContent: LandingContentMap = {
   },
 }
 
-const CACHE_KEY = 'soulaide_landing_content_cache'
+const CACHE_KEY = 'soulaide_landing_content_cache_v2'
 
 function getLocalCache(): LandingContentMap | null {
-  try {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const stored = window.localStorage.getItem(CACHE_KEY)
-      if (stored) {
-        return JSON.parse(stored) as LandingContentMap
-      }
-    }
-  } catch {
-    // ignore localStorage errors
-  }
+  // Do not rely on stale local storage to avoid flashing old data on page refresh
   return null
 }
 
 function setLocalCache(content: LandingContentMap) {
   try {
     if (typeof window !== 'undefined' && window.localStorage) {
+      window.localStorage.removeItem('soulaide_landing_content_cache')
       window.localStorage.setItem(CACHE_KEY, JSON.stringify(content))
     }
   } catch {

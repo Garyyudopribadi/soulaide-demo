@@ -57,6 +57,9 @@ export function useSiteSettings() {
       }
     },
     initialData: fallbackSettings,
+    staleTime: 0,
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: true,
   })
 
   const updateMutation = useMutation({

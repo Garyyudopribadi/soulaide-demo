@@ -7,96 +7,101 @@ export const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9
 export const LEGACY_SERVICE_ID_MAP: Record<string, { slug: string; canonicalId: string; title: string }> = {
   's1000000-0000-0000-0000-000000000001': {
     slug: 'individual-counseling',
-    canonicalId: 'e1000000-0000-0000-0000-000000000001',
-    title: 'Layanan Konseling Individu',
+    canonicalId: '7516044a-3883-41f6-8324-863d3ea80f5c',
+    title: 'Individual Counseling',
+  },
+  'e1000000-0000-0000-0000-000000000001': {
+    slug: 'individual-counseling',
+    canonicalId: '7516044a-3883-41f6-8324-863d3ea80f5c',
+    title: 'Individual Counseling',
   },
   's2000000-0000-0000-0000-000000000002': {
-    slug: 'mhcu',
-    canonicalId: 'e2000000-0000-0000-0000-000000000002',
-    title: 'Layanan MHCU (Mental Health Check Up)',
+    slug: 'mental-health-check-up',
+    canonicalId: '7b626640-6e63-4314-8b36-669b0dbd4dac',
+    title: 'Mental Health Check-UP',
+  },
+  'e2000000-0000-0000-0000-000000000002': {
+    slug: 'mental-health-check-up',
+    canonicalId: '7b626640-6e63-4314-8b36-669b0dbd4dac',
+    title: 'Mental Health Check-UP',
   },
   's3000000-0000-0000-0000-000000000003': {
-    slug: 'bundle-packet',
-    canonicalId: 'e3000000-0000-0000-0000-000000000003',
-    title: 'Bundling MHCU+Konseling Individu Online',
+    slug: 'bundle-mhcu-sesi-hasil-30m-konseling',
+    canonicalId: 'c297a263-5834-417d-bd8a-9319966f542f',
+    title: 'Bundle MHCU + Sesi Hasil 30m + Konseling',
+  },
+  'e3000000-0000-0000-0000-000000000003': {
+    slug: 'bundle-mhcu-sesi-hasil-30m-konseling',
+    canonicalId: 'c297a263-5834-417d-bd8a-9319966f542f',
+    title: 'Bundle MHCU + Sesi Hasil 30m + Konseling',
   },
 }
 
 export const fallbackServices: ServiceDetail[] = [
   {
-    id: 'e1000000-0000-0000-0000-000000000001',
-    title: 'Layanan Konseling Individu',
+    id: '7516044a-3883-41f6-8324-863d3ea80f5c',
+    title: 'Individual Counseling',
     category: 'Soul Guidance',
-    duration: '1 Sesi Konseling / 60 Menit',
-    method: 'Online & Tatap Muka (Offline)',
-    price: 110000,
-    priceOnline: 110000,
-    priceOffline: 350000,
+    duration: '60 Menit',
+    method: 'Online & Tatap Muka',
+    price: 1000,
+    priceOnline: 1000,
+    priceOffline: 1000,
     deliveryMethods: ['online', 'offline'],
     description:
-      'Sesi konseling 1-on-1 selama 60 menit bersama psikolog profesional untuk memahami pikiran, emosi, stres, quarter-life crisis, karier, maupun dinamika relasi.',
+      'Sesi konseling 1-on-1 dengan psikolog profesional untuk mengeksplorasi tantangan emosional, stres, quarter-life, atau relasi.',
     isConfirmedPrice: true,
     features: [
       'Sesi konseling 1-on-1 (60 menit)',
-      'Daring atau tatap muka Pondok Bambu',
-      'Pendamping Soul Guidance atau Soul Expert',
+      'Online (Google Meet) - Voice Call / Video Call',
+      'Offline / Tatap Muka (Pondok Bambu) - By Appointment',
     ],
   },
   {
-    id: 'e2000000-0000-0000-0000-000000000002',
-    title: 'Layanan MHCU (Mental Health Check Up)',
+    id: '7b626640-6e63-4314-8b36-669b0dbd4dac',
+    title: 'Mental Health Check-UP',
     category: 'Soul Guidance',
-    duration: 'Asesmen + 1 Sesi Konseling / 30 Menit',
-    method: 'Online & Tatap Muka (Offline)',
+    duration: '30 Menit',
+    method: 'Online & Tatap Muka',
     price: 89000,
     priceOnline: 89000,
-    priceOffline: 200000,
+    priceOffline: 89000,
     deliveryMethods: ['online', 'offline'],
     description:
-      'Pemeriksaan kesehatan mental terstruktur dilengkapi 1 sesi konseling pembahasan awal selama 30 menit untuk memahami kondisi emosional, tingkat stres, serta rekomendasi awal.',
+      'Layanan pemeriksaan kesehatan mental untuk membantu memahami kondisi psikologis umum, emosional, tingkat stress, serta rekomendasi awal.',
     isConfirmedPrice: true,
     features: [
-      'Asesmen kondisi psikologis terstruktur',
-      'Sesi pembahasan awal (30 menit)',
-      'Laporan analisis klinis dalam 2 minggu',
+      'Sesi konseling 1-on-1 (30 menit)',
+      'Online (Google Meet) - Voice Call / Video Call',
+      'Offline / Tatap Muka (Pondok Bambu) - By Appointment',
     ],
   },
   {
-    id: 'e3000000-0000-0000-0000-000000000003',
-    title: 'Bundling MHCU+Konseling Individu Online',
+    id: 'c297a263-5834-417d-bd8a-9319966f542f',
+    title: 'Bundle MHCU + Sesi Hasil 30m + Konseling',
     category: 'Soul Guidance',
-    duration: 'Asesmen + 1 Sesi Penyampaian Hasil MHCU / 30 Menit + 1 Sesi Konseling / 60 Menit',
-    method: 'Daring (Online via Google Meet)',
-    price: 169000,
-    priceOnline: 169000,
-    priceOffline: null,
-    deliveryMethods: ['online'],
+    duration: '90 Menit',
+    method: 'Online & Tatap Muka',
+    price: 168000,
+    priceOnline: 168000,
+    priceOffline: 168000,
+    deliveryMethods: ['online', 'offline'],
     description:
-      'Paket terintegrasi terbaik: asesmen MHCU menyeluruh, 1 sesi penyampaian hasil MHCU (30 menit), dan 1 sesi konseling individu mendalam (60 menit) secara online.',
+      'Layanan terintegrasi yang menggabungkan pemeriksaan kesehatan mental dengan sesi konseling individu secara mendalam.',
     isConfirmedPrice: true,
     features: [
       'Asesmen MHCU komprehensif',
       'Sesi penyampaian hasil (30 menit)',
-      'Sesi konseling individu daring (60 menit)',
+      'Sesi konseling individu (60 menit)',
     ],
   },
 ]
 
-export const SERVICES_STORAGE_KEY = 'soulaide_services_catalog_v1'
+// Cache versioned key - bumping or clearing ensures stale browser local storage never overrides fresh database data
+export const SERVICES_STORAGE_KEY = 'soulaide_services_catalog_v2'
 
 export function loadStoredServices(): ServiceDetail[] | null {
-  if (typeof window === 'undefined') return null
-  try {
-    const raw = localStorage.getItem(SERVICES_STORAGE_KEY)
-    if (raw) {
-      const parsed = JSON.parse(raw)
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        return parsed
-      }
-    }
-  } catch {
-    // ignore local storage error
-  }
+  // Always prefer live database data; avoid relying on stale local storage across deployment
   return null
 }
 
@@ -106,6 +111,8 @@ export function saveStoredServices(services: ServiceDetail[]): void {
   memoryServicesStore = [...services]
   if (typeof window !== 'undefined' && window.localStorage) {
     try {
+      // Clear legacy storage keys that may contain obsolete pricing from past sessions
+      window.localStorage.removeItem('soulaide_services_catalog_v1')
       window.localStorage.setItem(SERVICES_STORAGE_KEY, JSON.stringify(services))
     } catch {
       // ignore local storage error
@@ -114,13 +121,6 @@ export function saveStoredServices(services: ServiceDetail[]): void {
 }
 
 export function getEffectiveServices(): ServiceDetail[] {
-  if (typeof window !== 'undefined' && window.localStorage) {
-    const stored = loadStoredServices()
-    if (stored && stored.length > 0) {
-      memoryServicesStore = stored
-      return stored
-    }
-  }
   return [...memoryServicesStore]
 }
 
@@ -137,12 +137,12 @@ export function calculateServicePrice(
   if (isOffline) {
     const rawOffline = svc.priceOffline
     if (rawOffline === null || rawOffline === undefined) {
-      return svc.priceOnline ?? svc.price ?? 110000
+      return svc.priceOnline ?? svc.price ?? 1000
     }
     return rawOffline
   }
 
-  return svc.priceOnline ?? svc.price ?? 110000
+  return svc.priceOnline ?? svc.price ?? 1000
 }
 
 export function sanitizeServiceErrorMessage(error: unknown, fallbackMessage: string): string {
@@ -368,8 +368,8 @@ export function getDefaultFeaturesByTitle(title: string): string[] {
   }
   return [
     'Sesi konseling 1-on-1 (60 menit)',
-    'Daring atau tatap muka Pondok Bambu',
-    'Pendamping Soul Guidance atau Soul Expert',
+    'Online (Google Meet) - Voice Call / Video Call',
+    'Offline / Tatap Muka (Pondok Bambu) - By Appointment',
   ]
 }
 
@@ -500,6 +500,9 @@ export function useServices() {
       }
     },
     initialData: getEffectiveServices(),
+    staleTime: 0,
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: true,
   })
 
   const updatePriceMutation = useMutation({

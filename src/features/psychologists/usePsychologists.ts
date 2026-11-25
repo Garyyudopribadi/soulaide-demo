@@ -254,6 +254,9 @@ export function usePsychologists() {
       presence: localPresenceCache.get(p.id) ?? 'available',
       isActive: true,
     })),
+    staleTime: 0,
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: true,
   })
 
   const updatePresenceMutation = useMutation({

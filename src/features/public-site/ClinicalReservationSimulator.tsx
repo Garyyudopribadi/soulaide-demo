@@ -12,6 +12,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button.tsx'
 import { formatIDR } from '@/lib/utils.ts'
+import { calculateServicePrice } from '@/features/services/useServices.ts'
 import type { DeliveryMethod, ProfessionalTier, ServiceDetail } from '@/types/index.ts'
 import type { PsychologistWithPresence } from '@/features/psychologists/usePsychologists.ts'
 
@@ -58,24 +59,8 @@ export const ClinicalReservationSimulator: React.FC<ClinicalReservationSimulator
   // Auto-switch to online if service doesn't support offline
   const effectiveMethod = !supportsOffline && deliveryMethod === 'offline' ? 'online' : deliveryMethod
 
-  // Calculate price dynamically based on canonical pricing rules
-  const calculatePrice = (): number => {
-    if (!activeService) return 110000
-    const lower = activeService.title.toLowerCase()
-    const isExpert = selectedTier === 'Soul Expert'
-    const isOffline = effectiveMethod === 'offline'
-
-    if (lower.includes('bundl')) {
-      return isExpert ? 329000 : 169000
-    }
-    if (lower.includes('mhcu')) {
-      return isExpert ? (isOffline ? 300000 : 179000) : isOffline ? 200000 : 89000
-    }
-    // Individual counseling
-    return isExpert ? (isOffline ? 500000 : 250000) : isOffline ? 350000 : 110000
-  }
-
-  const currentPrice = calculatePrice()
+  // Calculate price dynamically based on database service model without hardcoding
+  const currentPrice = calculateServicePrice(activeService, effectiveMethod, selectedTier)
 
   const handleProceedBooking = () => {
     const params = new URLSearchParams()

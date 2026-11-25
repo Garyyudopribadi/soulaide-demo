@@ -8,13 +8,13 @@ describe('Public Site Data & Business Rules', () => {
   it('contains the 3 canonical services (Konseling Individu, MHCU, Bundling MHCU+Konseling Individu Online)', () => {
     expect(fallbackServices.length).toBe(3)
 
-    const individual = fallbackServices.find((s) => s.title === 'Layanan Konseling Individu')
-    const mhcu = fallbackServices.find((s) => s.title === 'Layanan MHCU (Mental Health Check Up)')
-    const bundle = fallbackServices.find((s) => s.title === 'Bundling MHCU+Konseling Individu Online')
+    const individual = fallbackServices.find((s) => s.id === '7516044a-3883-41f6-8324-863d3ea80f5c')
+    const mhcu = fallbackServices.find((s) => s.id === '7b626640-6e63-4314-8b36-669b0dbd4dac')
+    const bundle = fallbackServices.find((s) => s.id === 'c297a263-5834-417d-bd8a-9319966f542f')
 
     expect(individual).toBeDefined()
-    expect(individual?.priceOnline).toBe(110000)
-    expect(individual?.priceOffline).toBe(350000)
+    expect(individual?.priceOnline).toBe(1000)
+    expect(individual?.priceOffline).toBe(1000)
     expect(individual?.deliveryMethods).toContain('online')
     expect(individual?.deliveryMethods).toContain('offline')
 
@@ -24,7 +24,7 @@ describe('Public Site Data & Business Rules', () => {
     expect(mhcu?.deliveryMethods).toContain('offline')
 
     expect(bundle).toBeDefined()
-    expect(bundle?.priceOnline).toBe(169000)
+    expect(bundle?.priceOnline).toBe(168000)
     expect(bundle?.deliveryMethods).toContain('online')
   })
 
@@ -73,9 +73,9 @@ describe('Public Site Data & Business Rules', () => {
     expect(String(qty)).toBe('3')
 
     // Verifies that dynamic prices match database definitions
-    const individual = services.find((s) => s.title === 'Layanan Konseling Individu')
-    expect(individual?.priceOnline).toBe(110000)
-    expect(individual?.priceOffline).toBe(350000)
+    const individual = services.find((s) => s.id === '7516044a-3883-41f6-8324-863d3ea80f5c')
+    expect(individual?.priceOnline).toBe(1000)
+    expect(individual?.priceOffline).toBe(1000)
   })
 
   it('validates default clinical commitment editorial value pillars structure', () => {

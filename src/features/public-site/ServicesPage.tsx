@@ -155,7 +155,7 @@ export const ServicesPage: React.FC = () => {
               <div className="pt-2 border-t border-[#EAE3DC]/80 flex items-center justify-between text-xs font-semibold text-plum-800">
                 <span className="flex items-center gap-1.5">
                   <Check className="w-4 h-4 text-plum-600 shrink-0" />
-                  Mulai Rp89.000 (MHCU) &amp; Rp110.000 (Konseling)
+                  Mulai Rp1.000 (Konseling) &amp; Rp89.000 (MHCU)
                 </span>
                 <span className="text-[11px] underline">Aktifkan Tarif</span>
               </div>

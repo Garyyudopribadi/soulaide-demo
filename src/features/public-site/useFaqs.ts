@@ -76,6 +76,9 @@ export function useFaqs() {
       }
     },
     initialData: fallbackFaqs,
+    staleTime: 0,
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: true,
   })
 
   const addFaqMutation = useMutation({

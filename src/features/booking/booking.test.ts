@@ -114,7 +114,7 @@ describe('Revised Services & Professional Tiers (Soul Guidance vs Soul Expert)',
   })
 
   it('calculates booking service prices dynamically from database service properties', () => {
-    const individualService = fallbackServices.find((s) => s.id === 'e1000000-0000-0000-0000-000000000001')!
+    const individualService = fallbackServices.find((s) => s.id === '7516044a-3883-41f6-8324-863d3ea80f5c')!
     expect(individualService).toBeDefined()
 
     // Default base prices from database service model
